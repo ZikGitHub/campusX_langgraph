@@ -11,6 +11,9 @@ def generate_thread_id():
     thread_id = str(uuid.uuid4())
     return thread_id
 
+def add_thread(thread_id):
+    if thread_id not in st.session_state["chat_threads"]:
+        st.session_state["chat_threads"].append(thread_id)
 
 def reset_chat():
     thread_id = generate_thread_id()
@@ -18,17 +21,10 @@ def reset_chat():
     add_thread(st.session_state["thread_id"])
     st.session_state["message_history"] = []
 
-
-def add_thread(thread_id):
-    if thread_id not in st.session_state["chat_threads"]:
-        st.session_state["chat_threads"].append(thread_id)
-
-
 def load_conversation(thread_id):
     # Load the conversation history for the specified thread_id
-    return chatbot.get_state(config={"configurable": {"thread_id": thread_id}}).values[
-        "messages"
-    ]
+    return chatbot.get_state(config={"configurable": 
+                                     {"thread_id": thread_id}}).values["messages"]
 
 
 # Session setup *************************************************

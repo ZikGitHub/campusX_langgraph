@@ -45,7 +45,6 @@ graph.add_edge("chatnode", END)
 chatbot = graph.compile(checkpointer=checkpointer)
 
 # Provide a config argument as required by the list() method
-
 def retrieve_all_threads():
     all_threads = set()
     for checkpoint in checkpointer.list(None):
