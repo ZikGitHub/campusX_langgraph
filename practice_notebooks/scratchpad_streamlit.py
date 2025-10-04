@@ -1,5 +1,5 @@
 import streamlit as st
-from backend import chatbot
+from scratchpad_backend import chatbot
 from langchain_core.messages import HumanMessage
 
 CONFIG = {'configurable':{'thread_id': 'thread-1'}}
